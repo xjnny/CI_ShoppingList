@@ -23,11 +23,11 @@ class Todos extends CI_Controller {
     private function when_posted($id, $data) {
         if (!$id) {
             //add todo
-            $this->set_flashes($this->todo->db->insert('todos', $data), 'Successfully added todo', 'There was a problem adding the todo');
+            $this->set_flashes($this->todo->db->insert('items', $data), 'Successfully added todo', 'There was a problem adding the todo');
         } else {
             //edit todo
             $this->todo->db->where('id', $id);
-            $this->set_flashes($this->todo->db->update('todos', $data), 'Successfully updated the todo', 'There was a problem updating the todo');
+            $this->set_flashes($this->todo->db->update('items', $data), 'Successfully updated the todo', 'There was a problem updating the todo');
         }
     }
 
@@ -45,7 +45,7 @@ class Todos extends CI_Controller {
 
         $this->load_helper_and_model();
         
-        $query = $this->todo->db->query('SELECT * FROM todos');
+        $query = $this->todo->db->query('SELECT * FROM items');
 
         $data['todos'] = $query->result();
         
@@ -80,13 +80,13 @@ class Todos extends CI_Controller {
         if ($this->input->post()) {
 
             //if something in the post
-            $this->form_validation->set_rules([['field' => 'title', 'label' => 'title', 'rules' => 'required']]);
+            $this->form_validation->set_rules([['field' => 'item', 'label' => 'item', 'rules' => 'required']]);
 
             //check to see if form validates
             if ($this->form_validation->run()) {
 
                 //If form validates
-                $data = ['title' => $this->input->post('title')];
+                $data = ['item' => $this->input->post('item')];
                 $this->when_posted($id, $data);
 
                 //Redirect back to list page
@@ -94,17 +94,17 @@ class Todos extends CI_Controller {
             } else {
                 //doesn't validate
                 $todo = new Todo();
-                $todo->title = '';
+                $todo->item = '';
             }
         } else {
             //Coming from list
             if (!$id) {
                 //Coming to add
                 $todo = new Todo();
-                $todo->title = '';
+                $todo->item = '';
             } else {
                 //Coming to edit
-                $query = $this->todo->db->get_where('todos', ['id' => $id]);
+                $query = $this->todo->db->get_where('items', ['id' => $id]);
                 $todo = $query->row();
             }
         }
@@ -128,7 +128,7 @@ class Todos extends CI_Controller {
         $data['id'] = $id;
 
         //Delete todo
-        if ($this->todo->db->delete('todos', ['id' => $id])) {
+        if ($this->todo->db->delete('items', ['id' => $id])) {
             $this->session->set_flashdata('success', 'Successfully deleted todo');
         } else {
             $this->session->set_flashdata('error', 'There was a problem deleting the todo');
