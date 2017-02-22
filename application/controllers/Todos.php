@@ -23,11 +23,11 @@ class Todos extends CI_Controller {
     private function when_posted($id, $data) {
         if (!$id) {
             //add todo
-            $this->set_flashes($this->todo->db->insert('items', $data), 'Successfully added todo', 'There was a problem adding the todo');
+            $this->set_flashes($this->todo->db->insert('items', $data), 'Successfully added item to your shopping list', 'There was a problem adding the item to your shopping list');
         } else {
             //edit todo
             $this->todo->db->where('id', $id);
-            $this->set_flashes($this->todo->db->update('items', $data), 'Successfully updated the todo', 'There was a problem updating the todo');
+            $this->set_flashes($this->todo->db->update('items', $data), 'Successfully updated the selected item on your shopping list', 'There was a problem updating the selected item on your shopping list');
         }
     }
 
@@ -39,8 +39,8 @@ class Todos extends CI_Controller {
 
         //Metadata and Title
         $this->template->set_title('List');
-        $this->template->set_title_desc('A list of todos');
-        $this->template->add_meta('description', 'This is a really cool list of todos.');
+        $this->template->set_title_desc('A shopping list');
+        $this->template->add_meta('description', 'This is a really cool shopping list.');
         $this->template->add_meta('keywords', 'list, todos');
 
         $this->load_helper_and_model();
@@ -64,8 +64,8 @@ class Todos extends CI_Controller {
 
         //Metadata and Title
         $this->template->set_title('Add | Edit');
-        $this->template->set_title_desc('Edit todos');
-        $this->template->add_meta('description', 'This is where you add\edit your todos.');
+        $this->template->set_title_desc('Edit shopping list');
+        $this->template->add_meta('description', 'This is where you add\edit your shopping list.');
         $this->template->add_meta('keywords', 'add, edit, todos');
 
         $this->load_helper_and_model();
@@ -129,9 +129,9 @@ class Todos extends CI_Controller {
 
         //Delete todo
         if ($this->todo->db->delete('items', ['id' => $id])) {
-            $this->session->set_flashdata('success', 'Successfully deleted todo');
+            $this->session->set_flashdata('success', 'Successfully deleted item');
         } else {
-            $this->session->set_flashdata('error', 'There was a problem deleting the todo');
+            $this->session->set_flashdata('error', 'There was a problem deleting the item');
         }
 
         //Redirect back to list page
