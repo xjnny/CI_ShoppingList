@@ -4,12 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!DOCTYPE html> 
 <html lang="en">
     <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
         <style type="text/css">
 
             body {
                 background-color: #fff;
-                margin: 40px;
-                font-family: "Karla";
+                font-family: "Roboto";
                 color: #4F5155;
             }
 
@@ -54,13 +56,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
 
             #container {
-                margin: 10px;
+                margin: 50px;
                 border: 1px solid #D0D0D0;
                 box-shadow: 0 0 8px #D0D0D0;
+                padding: 20px;
             }
+            
+            main {
+                height: 75vh;
+            }
+            
         </style>
     </head>
     <body>
         <?= $output; ?>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     </body>
 </html>
