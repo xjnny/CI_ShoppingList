@@ -1,8 +1,8 @@
 <h1>
     <?php if ($id):?>  
-        Edit TODO
+        Edit Shopping List
     <?php else: ?>
-        Add new TODO
+        Add new item to shopping list
     <?php endif; ?>
 </h1>
 <div style="color: red; font-weight: bold;">
