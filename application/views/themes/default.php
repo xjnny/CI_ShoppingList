@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             body {
                 background-color: #fff;
                 margin: 40px;
-                font: 13px/20px normal Helvetica, Arial, sans-serif;
+                font-family: "Karla";
                 color: #4F5155;
             }
 
