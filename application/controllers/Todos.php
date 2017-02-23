@@ -74,7 +74,7 @@ class Todos extends CI_Controller {
 
         if ($this->input->post('cancel')) {
             //Redirect back to list page
-            redirect('', 'refresh');
+            redirect('/todos', 'refresh');
         }
 
         if ($this->input->post()) {
@@ -90,7 +90,7 @@ class Todos extends CI_Controller {
                 $this->when_posted($id, $data);
 
                 //Redirect back to list page
-                redirect('', 'refresh');
+                redirect('/todos', 'refresh');
             } else {
                 //doesn't validate
                 $todo = new Todo();
@@ -115,7 +115,100 @@ class Todos extends CI_Controller {
         //Load page
         $this->template->load_view('pages/add_edit', $data);
     }
-
+    
+    
+    /**
+     * Display Login page.
+     */
+    public function login() {
+        //Load helper
+        $this->load->helper('url');
+	$this->load->helper('form');
+	$this->load->view('pages/login');
+    }
+    
+    /**
+     * Display Sign Up page.
+     */
+    public function signup() {
+	$this->load->helper('form');
+	$this->load->view('pages/signup');
+    }
+    /**
+     * Sign the user out and load home page.
+     */
+    public function logout() {
+        $this->load->helper('url');
+	$this->session->sess_destroy();
+	redirect('/todos', 'refresh');
+    }
+    
+    public function validate_user(){
+	$this->validate(false);	
+    }
+   /**
+    * Validate that the user is a member. Also used as part of login 
+    * (and AJAX login) functionality.
+    */
+    public function validate($is_ajax = true) {
+        $this->load->helper('url');
+	$this->load->model('User');
+	if ($this->User->validate()) {
+	    $this->_do_login();
+	    if(!$is_ajax){
+		redirect('todos');
+	    }
+	} else { // incorrect username or password
+	    $this->session->set_flashdata('error', 'Incorrect username and/or password. Please try again.');
+	    redirect('/todos/login', 'refresh');
+	}
+    }
+    /**
+     * Log the user in and redirect to home page.
+     */
+    private function _do_login() {
+	$data = array(
+	    'username' => $this->input->post('username'),
+	    'is_logged_in' => true
+	);
+	$this->session->set_userdata($data);
+    }  
+    
+    /**
+     * Create a new user and store in db. Used as part of Signup functionality.
+     */
+    public function create_user() {
+	$this->load->library('form_validation');
+        $this->load->helper('url');
+	//validate 
+	$this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
+	$this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
+	$this->form_validation->set_rules('email_address', 'Email Address', 'trim|required|valid_email');
+	$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]');
+	$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
+	$this->form_validation->set_rules('password2', 'Password Confirmation', 'trim|required|matches[password]');
+	if (!$this->form_validation->run()) {
+	    $this->load->view('pages/signup');
+	} else {
+	    //Create new user
+	    $this->load->model('user');
+	    $data['first_name'] = $this->input->post('first_name');
+	    $data['last_name'] = $this->input->post('last_name');
+	    $data['email_address'] = $this->input->post('email_address');
+	    $data['username'] = $this->input->post('username');
+	    $data['password'] = md5($this->input->post('password'));
+	    //save new user
+	    if ($this->user->db->insert('user', $data)) {
+		$this->_do_login();
+		$this->session->set_flashdata('success', 'Account successfully created.');
+		redirect('/todos', 'refresh');
+	    } else {
+		$this->session->set_flashdata('error', 'An error occurred and the account was not created.');
+		redirect('todos/signup');
+	    }
+	}
+    }
+    
     public function delete($id) {
 
         //Load url helper
