@@ -121,18 +121,21 @@ class Todos extends CI_Controller {
      * Display Login page.
      */
     public function login() {
+        $this->load->library('template');
         //Load helper
         $this->load->helper('url');
 	$this->load->helper('form');
-	$this->load->view('pages/login');
+	$this->template->load_view('pages/login');
     }
     
     /**
      * Display Sign Up page.
      */
     public function signup() {
+        $this->load->library('template');
+        $this->load->helper('url');
 	$this->load->helper('form');
-	$this->load->view('pages/signup');
+	$this->template->load_view('pages/signup');
     }
     /**
      * Sign the user out and load home page.
