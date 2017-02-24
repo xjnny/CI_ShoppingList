@@ -1,6 +1,6 @@
 <nav>
     <div class="blue-grey darken-1 nav-wrapper">
-        <a href="#" class="brand-logo">CI_ShoppingList</a>
+        <a href="/CI_ShoppingList/index.php/todos" class="brand-logo">CI_ShoppingList</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <?php if (!isset($_SESSION['is_logged_in'])): ?>
                 <li><?= anchor('todos/signup', 'Sign Up'); ?>&nbsp</li>

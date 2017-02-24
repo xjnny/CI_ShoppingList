@@ -45,8 +45,8 @@ class Todos extends CI_Controller {
 
         $this->load_helper_and_model();
         
-        $query = $this->todo->db->query('SELECT * FROM items');
-
+        $query = $this->todo->db->get_where('items', ['user_id' => $this->session->userdata('user_id')]);
+        
         $data['todos'] = $query->result();
         
         //Load page
@@ -86,7 +86,7 @@ class Todos extends CI_Controller {
             if ($this->form_validation->run()) {
 
                 //If form validates
-                $data = ['item' => $this->input->post('item')];
+                $data = ['item' => $this->input->post('item'), 'user_id' => $this->session->userdata('user_id')];
                 $this->when_posted($id, $data);
 
                 //Redirect back to list page
@@ -170,7 +170,9 @@ class Todos extends CI_Controller {
      * Log the user in and redirect to home page.
      */
     private function _do_login() {
+        $this->load->model('user');
 	$data = array(
+            'user_id' => $this->user->db->select('id')->where('username', $this->input->post('username'))->get('users')->row()->id,
 	    'username' => $this->input->post('username'),
 	    'is_logged_in' => true
 	);
@@ -181,6 +183,7 @@ class Todos extends CI_Controller {
      * Create a new user and store in db. Used as part of Signup functionality.
      */
     public function create_user() {
+        $this->load->library('template');
 	$this->load->library('form_validation');
         $this->load->helper('url');
 	//validate 
@@ -191,7 +194,7 @@ class Todos extends CI_Controller {
 	$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
 	$this->form_validation->set_rules('password2', 'Password Confirmation', 'trim|required|matches[password]');
 	if (!$this->form_validation->run()) {
-	    $this->load->view('pages/signup');
+	    $this->template->load_view('pages/signup');
 	} else {
 	    //Create new user
 	    $this->load->model('user');
@@ -201,7 +204,7 @@ class Todos extends CI_Controller {
 	    $data['username'] = $this->input->post('username');
 	    $data['password'] = md5($this->input->post('password'));
 	    //save new user
-	    if ($this->user->db->insert('user', $data)) {
+	    if ($this->user->db->insert('users', $data)) {
 		$this->_do_login();
 		$this->session->set_flashdata('success', 'Account successfully created.');
 		redirect('/todos', 'refresh');
