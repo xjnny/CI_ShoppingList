@@ -55,15 +55,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 margin: 20px 0 0 0;
             }
 
+            
+            
+            @media only screen and (min-width: 993px)
+            {
+            nav .brand-logo {
+                margin-left: 50px;
+            }
+            .container {
+                width: 90%;
+            }
+            }
+            
+            @media only screen and (min-width: 601px)
+            {
+            .container {
+                width: 90%;
+            }
+            }
+            
             #container {
                 margin: 50px;
                 border: 1px solid #D0D0D0;
                 box-shadow: 0 0 8px #D0D0D0;
-                padding: 20px;
             }
             
             main {
-                height: 75vh;
+                height: 77vh;
+            }
+            
+            .todo-container {
+                padding: 15px 20px 5px 20px;
+            }
+            
+            .complete {
+                text-decoration: line-through;
+            }
+            .pending {
+                text-decoration: none;
+            }
+            
+            div.footer-copyright {
+                overflow: hidden;
+                min-height: 50px;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center;
+                padding: 10px 0px;
+                color: rgba(255,255,255,0.8);
+                background-color: rgba(51,51,51,0.08);
+            }
+            div.text-white{
+                padding: 5px 15px;
+            }
+            
+            div.text-white a {
+                color: white;
+            }
+            
+            .todo-item {
+                padding-bottom: 10px;
             }
             
         </style>
