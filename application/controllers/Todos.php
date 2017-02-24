@@ -233,5 +233,26 @@ class Todos extends CI_Controller {
         //Redirect back to list page
         redirect('', 'refresh');
     }
+    
+        public function complete($id) {
+
+        //Load url helper
+        $this->load->helper('url');
+
+        //Load Model
+        $this->load->model('todo');
+        
+        
+        
+        $this->todo->db->update('items', ['status' => 'complete'], ['id' => $id]);
+        $this->session->set_flashdata('success', 'Successfully completed item');
+        
+        //Pass id through to view
+        $data['id'] = $id;
+
+       
+        //Redirect back to list page
+        redirect('', 'refresh');
+    }
 
 }
