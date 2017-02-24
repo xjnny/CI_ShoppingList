@@ -241,7 +241,12 @@ class Todos extends CI_Controller {
 
         //Load Model
         $this->load->model('todo');
-
+        
+        
+        
+        $this->todo->db->update('items', ['status' => 'complete'], ['id' => $id]);
+        $this->session->set_flashdata('success', 'Successfully completed item');
+        
         //Pass id through to view
         $data['id'] = $id;
 
