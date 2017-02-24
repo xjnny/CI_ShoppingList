@@ -9,7 +9,7 @@
 <?= anchor('todos/add_edit', 'Add'); ?>
     <?php foreach ($todos as $todo): ?>
     <div>
-        <span><?= $todo->item; ?></span>&nbsp<?= anchor('todos/add_edit/' . $todo->id, 'Edit'); ?>&nbsp|&nbsp<?= anchor('todos/delete/' . $todo->id, 'Delete'); ?>
+        <span><?= $todo->item; ?></span>&nbsp<?= anchor('todos/complete/' . $todo->id, 'Complete'); ?>&nbsp|&nbsp<?= anchor('todos/add_edit/' . $todo->id, 'Edit'); ?>&nbsp|&nbsp<?= anchor('todos/delete/' . $todo->id, 'Delete'); ?>
     </div>
 <?php endforeach; ?>
 <?php endif; ?>   
