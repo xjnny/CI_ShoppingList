@@ -13,7 +13,8 @@
     </div>
 <?php endforeach; ?>
 <?php endif; ?>   
-<?php if (!isset($_SESSION['is_logged_in'])): ?>  
+    
+<?php if (!isset($_SESSION['is_logged_in'])):?>
     <h4>You gotta log in to add to your shopping list!</h4>
 <?php endif; ?>   
     
