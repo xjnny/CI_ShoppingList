@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Applications/MAMP/htdocs/CI_ShoppingList/application/controllers/Todos.php</file>
             <file>file:/Applications/MAMP/htdocs/CI_ShoppingList/application/views/pages/login.php</file>
-            <file>file:/Applications/MAMP/htdocs/CI_ShoppingList/application/views/themes/default.php</file>
-            <file>file:/Applications/MAMP/htdocs/CI_ShoppingList/application/libraries/Template.php</file>
             <file>file:/Applications/MAMP/htdocs/CI_ShoppingList/application/views/layouts/default.php</file>
             <file>file:/Applications/MAMP/htdocs/CI_ShoppingList/application/views/partials/header.php</file>
+            <file>file:/Applications/MAMP/htdocs/CI_ShoppingList/application/models/Todo.php</file>
             <file>file:/Applications/MAMP/htdocs/CI_ShoppingList/application/views/pages/list.php</file>
         </group>
     </open-files>
