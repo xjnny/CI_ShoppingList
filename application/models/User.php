@@ -10,7 +10,7 @@ class User extends CI_Model {
     public $password;
     
     function validate() {
-        $user = $this->db->get_where('user', ['username' => $this->input->post('username'), 'password' => md5($this->input->post('password'))]);
+        $user = $this->db->get_where('users', ['username' => $this->input->post('username'), 'password' => md5($this->input->post('password'))]);
 	if ($user) {
 	    return true;
         }

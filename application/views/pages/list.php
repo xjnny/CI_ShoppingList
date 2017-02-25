@@ -11,9 +11,6 @@
 
 <?php if (isset($_SESSION['is_logged_in'])): ?>      
     <div class="todo-container">
-
-
-
         <?php foreach ($todos as $todo): ?>
             <div class="todo-item">
                 <?php if ($this->db->select('id')->where('status', 'complete')->get('items')->row()): ?>
