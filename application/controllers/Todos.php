@@ -8,6 +8,7 @@ class Todos extends CI_Controller {
         //Load helper
         $this->load->helper('url');
 
+        $this->load->helper('form');
         //Load model
         $this->load->model('todo');
     }
