@@ -12,19 +12,26 @@
 <?php if (isset($_SESSION['is_logged_in'])): ?>      
     <div class="todo-container">
 
-
-
+        <?php
+        $complete_query = $this->db->select('id')->where('status', 'complete')->get('items');
+        $pending_query = $this->db->select('id')->where('status', 'pending')->get('items');
+        ?>
         <?php foreach ($todos as $todo): ?>
             <div class="todo-item">
-                <?php if ($this->db->select('id')->where('status', 'complete')->get('items')->row()): ?>
-                    <?php if ($todo->id === $this->db->select('id')->where('status', 'complete')->get('items')->row()->id): ?>
-                        <span class="complete"><?= $todo->item; ?></span> &nbsp<?= anchor('todos/add_edit/' . $todo->id, 'Edit'); ?>&nbsp|&nbsp<?= anchor('todos/delete/' . $todo->id, 'Delete'); ?>
-                    <?php endif ?>
+                <?php if ($complete_query): ?>
+                    <?php foreach ($complete_query->result_array() as $complete_row): ?>
+                        <?php if ($todo->id === $complete_row['id']): ?>
+                            <span class="complete"><?= $todo->item; ?></span> &nbsp<?= anchor('todos/add_edit/' . $todo->id, 'Edit'); ?>&nbsp|&nbsp<?= anchor('todos/delete/' . $todo->id, 'Delete'); ?>
+                        <?php endif ?>
+                    <?php endforeach; ?>
                 <?php endif ?>
-                <?php if ($this->db->select('id')->where('status', 'pending')->get('items')->row()): ?>
-                    <?php if ($todo->id === $this->db->select('id')->where('status', 'pending')->get('items')->row()->id): ?>
-                        <span class="pending"><?= $todo->item; ?></span>&nbsp<?= anchor('todos/complete/' . $todo->id, 'Complete'); ?>&nbsp|&nbsp<?= anchor('todos/add_edit/' . $todo->id, 'Edit'); ?>&nbsp|&nbsp<?= anchor('todos/delete/' . $todo->id, 'Delete'); ?>
-                    <?php endif; ?>
+
+                <?php if ($pending_query): ?>
+                    <?php foreach ($pending_query->result_array() as $pending_row): ?>
+                        <?php if ($todo->id === $pending_row['id']): ?>
+                            <span class="pending"><?= $todo->item; ?></span>&nbsp<?= anchor('todos/complete/' . $todo->id, 'Complete'); ?>&nbsp|&nbsp<?= anchor('todos/add_edit/' . $todo->id, 'Edit'); ?>&nbsp|&nbsp<?= anchor('todos/delete/' . $todo->id, 'Delete'); ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
