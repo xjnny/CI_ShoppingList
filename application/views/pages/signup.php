@@ -74,7 +74,7 @@ if ($this->session->flashdata('error')):
 	?>
     </div>
     <div class="wrapper">
-	<?php echo form_submit(array('name' => 'save', 'class' => 'submit', 'value' => 'Create Account')); ?>
+	<?php echo form_submit('save', 'Create Account', 'class="waves-effect waves-light btn cyan lighten-2 right"'); ?>
     </div>
 
 
