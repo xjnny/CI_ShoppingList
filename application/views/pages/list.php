@@ -39,10 +39,11 @@
                                <!--TODO fix onclick function-->
                                <?php $checkjs = array('onClick' => 'todos/complete/'); ?>
                             
-                                   <?php echo form_checkbox($checkdata, $checkjs['onClick']); ?>
-                              <label for="check"> 
+                                   <?php // echo form_checkbox($checkdata, $checkjs['onClick']); ?>
+                              <!--<label for="check">--> 
                                 <span class="pending"><?= $todo->item; ?>
-                               </span></label>
+                               <!--</span>-->
+                              </label>
                                    &nbsp<?= anchor('todos/complete/' . $todo->id, 'Complete');?>&nbsp|&nbsp<?= anchor('todos/add_edit/' . $todo->id, 'Edit'); ?>&nbsp|&nbsp<?= anchor('todos/delete/' . $todo->id, 'Delete'); ?></li>
                        
                                        <?php endif; ?>

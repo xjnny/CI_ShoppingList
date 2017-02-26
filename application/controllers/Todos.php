@@ -42,7 +42,8 @@ class Todos extends CI_Controller {
         $this->template->set_title('List');
         $this->template->set_title_desc('A shopping list');
         $this->template->add_meta('description', 'This is a really cool shopping list.');
-        $this->template->add_meta('keywords', 'list, todos');$this->template->add_css('css/main.css');
+        $this->template->add_meta('keywords', 'list, todos');
+        $this->template->add_css('css/main.css');
         
         $this->load_helper_and_model();
         
