@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <head>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <style type="text/css">
 
@@ -75,19 +76,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
             
             #container {
-                margin: 50px;
-                border: 1px solid #D0D0D0;
+                width: 600px;
+                margin: 50px auto;
                 box-shadow: 0 0 8px #D0D0D0;
             }
             
             main {
                 height: 77vh;
             }
-            
-            .todo-container {
-                padding: 15px 20px 5px 20px;
+            .collection {
+                margin: 0;
             }
-            
             .complete {
                 text-decoration: line-through;
             }
@@ -108,17 +107,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 color: rgba(255,255,255,0.8);
                 background-color: rgba(51,51,51,0.08);
             }
-            div.text-white{
-                padding: 5px 15px;
-            }
             
             div.text-white a {
                 color: white;
             }
             
-            .todo-item {
-                padding-bottom: 10px;
-            }
+            div.btn-floating.btn {
+position: absolute;
+    top: 15px;
+    right: 4%;
+}
             
         </style>
     </head>
