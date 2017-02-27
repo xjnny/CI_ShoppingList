@@ -12,7 +12,7 @@
     <fieldset>
         <div class="field">
             <label>Title:</label>
-            <input name="item" type="text" value="<?= $todo->item; ?>"/>
+            <input name="item" type="text" value="<?= $item->item; ?>"/>
         </div>
         <div class="wrapper">
             <input type="submit" class="waves-effect waves-light btn cyan lighten-2" name="save" value="<?php echo $id ? 'Edit' : 'Add'; ?>" class="submit" />

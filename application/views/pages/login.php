@@ -6,7 +6,7 @@ if ($this->session->flashdata('error')):
     <div class="alert alert-error" role="alert"><?php echo $this->session->flashdata('error'); ?></div>
 <?php endif; ?>
 <?php echo validation_errors(); ?>
-<?php echo form_open('todos/validate_user'); ?>
+<?php echo form_open('items/validate_user'); ?>
 <fieldset>
     <div class="field">
 	<?php echo form_label('Username', 'username'); ?>
@@ -22,5 +22,5 @@ if ($this->session->flashdata('error')):
 </fieldset>
 <?php echo form_close(); ?>
 
-<?php echo "Don't have an account? ".anchor('todos/signup', "Create an account."); ?>
+<?php echo "Don't have an account? ".anchor('items/signup', "Create an account."); ?>
 
