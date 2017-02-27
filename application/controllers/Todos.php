@@ -178,7 +178,7 @@ class Todos extends CI_Controller {
     private function _do_login() {
         $this->load->model('user');
 	$data = array(
-            'user_id' => $this->user->db->select('id')->where('username', $this->input->post('username'))->get('users')->row()->id,
+            'user_id' => $this->db->select('id', 'username', 'password')->where(['username' => $this->input->post('username'), 'password' => md5($this->input->post('password'))])->get('users')->row()->id,
 	    'username' => $this->input->post('username'),
 	    'is_logged_in' => true
 	);
