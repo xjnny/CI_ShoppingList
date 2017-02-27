@@ -43,13 +43,15 @@ class Todos extends CI_Controller {
         $this->template->set_title_desc('A shopping list');
         $this->template->add_meta('description', 'This is a really cool shopping list.');
         $this->template->add_meta('keywords', 'list, todos');
-        $this->template->add_css('css/main.css');
+        
         
         $this->load_helper_and_model();
         
         $query = $this->todo->db->get_where('items', ['user_id' => $this->session->userdata('user_id')]);
         
         $data['todos'] = $query->result();
+        
+        $this->template->add_css('css/main.css');
         
         //Load page
         $this->template->load_view('pages/list', $data);
@@ -69,7 +71,7 @@ class Todos extends CI_Controller {
         $this->template->set_title_desc('Edit shopping list');
         $this->template->add_meta('description', 'This is where you add\edit your shopping list.');
         $this->template->add_meta('keywords', 'add, edit, todos');
-
+        $this->template->add_css('css/main.css');
         $this->load_helper_and_model();
 
         $todo = NULL;
@@ -127,6 +129,7 @@ class Todos extends CI_Controller {
         //Load helper
         $this->load->helper('url');
 	$this->load->helper('form');
+        $this->template->add_css('css/main.css');
 	$this->template->load_view('pages/login');
     }
     
@@ -137,6 +140,7 @@ class Todos extends CI_Controller {
         $this->load->library('template');
         $this->load->helper('url');
 	$this->load->helper('form');
+        $this->template->add_css('css/main.css');
 	$this->template->load_view('pages/signup');
     }
     /**
