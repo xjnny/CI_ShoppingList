@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <?php echo $meta . $css .$js; ?>
     </head>
-    <body>
+    <body class="blue-grey lighten-5">
         <?= $output; ?>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     </body>

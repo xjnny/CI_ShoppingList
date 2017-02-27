@@ -25,7 +25,12 @@
                 <?php if ($complete_query): ?>
                     <?php foreach ($complete_query->result_array() as $complete_row): ?>
                         <?php if ($item->id === $complete_row['id']): ?>
-                <li class="collection-item">  <span class="complete"><?= $item->item; ?></span> &nbsp<?= anchor('items/add_edit/' . $item->id, 'Edit'); ?>&nbsp|&nbsp<?= anchor('items/delete/' . $item->id, 'Delete'); ?></li>
+                <li class="collection-item">  
+                    <?= anchor('items/uncomplete/' . $item->id, '<i class="red-text text-lighten-1 material-icons">cancel</i>');?> 
+                    <span class="complete"><?= $item->item; ?></span> 
+                                                  <?= anchor('items/delete/' . $item->id, '<i class="grey-text material-icons right">delete</i>'); ?>
+                                   <?= anchor('items/add_edit/' . $item->id, '<i class="grey-text material-icons right">edit</i>'); ?>
+                </li>
                         <?php endif ?>
                     <?php endforeach; ?>
                 <?php endif ?>
@@ -42,10 +47,13 @@
                             
                                    <?php // echo form_checkbox($checkdata, $checkjs['onClick']); ?>
                               <!--<label for="check">--> 
-                                <span class="pending"><?= $item->item; ?>
-                               <!--</span>-->
-                              </label>
-                                   &nbsp<?= anchor('items/complete/' . $item->id, 'Complete');?>&nbsp|&nbsp<?= anchor('items/add_edit/' . $item->id, 'Edit'); ?>&nbsp|&nbsp<?= anchor('items/delete/' . $item->id, 'Delete'); ?></li>
+                               <?= anchor('items/complete/' . $item->id, '<i class="green-text text-lighten-1 material-icons">check_circle</i>');?> 
+                              <span class="pending"><?= $item->item; ?>
+                               </span>
+                              <!--</label>-->
+                              <?= anchor('items/delete/' . $item->id, '<i class="grey-text material-icons right">delete</i>'); ?>
+                                   <?= anchor('items/add_edit/' . $item->id, '<i class="grey-text material-icons right">edit</i>'); ?>
+                              </li>
                        
                                        <?php endif; ?>
                     <?php endforeach; ?>
