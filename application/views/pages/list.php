@@ -6,10 +6,11 @@
 <?php endif; ?>
 
 <?php if (!isset($_SESSION['is_logged_in'])): ?>
-    <h4>You gotta log in to add to your shopping list!</h4>
+    <h5 class="center-align">You gotta <?= anchor('todos/login', 'Log In'); ?> to add to your shopping list!</h5>
 <?php endif; ?>  
-<ul class="collection with-header">
+
 <?php if (isset($_SESSION['is_logged_in'])): ?> 
+    <ul class="collection with-header">
     <li class="collection-header"><h5>Shopping List</h5></li>
      <div class="btn-floating btn waves-effect waves-light text-white cyan lighten-2"><?= anchor('todos/add_edit', '<i class="material-icons">add</i>'); ?></div>  
 
