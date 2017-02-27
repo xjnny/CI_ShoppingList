@@ -115,5 +115,19 @@ div.text-white a {
 div.btn-floating.btn {
     position: absolute;
     top: 15px;
-    right: 4%;
+    right: 3%;
+}
+
+
+i.material-icons {
+    font-size:  20px;
+}
+
+.pending, .complete {
+    vertical-align: top;
+    margin-left: 5px;
+}
+
+.collection.with-header .collection-item {
+    padding-left: 20px;
 }
