@@ -264,4 +264,23 @@ class Items extends CI_Controller {
         redirect('', 'refresh');
     }
 
+            public function uncomplete($id) {
+
+        //Load url helper
+        $this->load->helper('url');
+
+        //Load Model
+        $this->load->model('item');
+              
+        $this->item->db->update('items', ['status' => 'pending'], ['id' => $id]);
+        $this->session->set_flashdata('success', 'Successfully uncompleted item');
+        
+        //Pass id through to view
+        $data['id'] = $id;
+
+       
+        //Redirect back to list page
+        redirect('', 'refresh');
+    }
+    
 }
