@@ -8,7 +8,7 @@ if ($this->session->flashdata('error')):
 <?php echo validation_errors('<div class="alert alert-error">', "</div>"); ?>
 <fieldset>
     <legend>Personal Information</legend>
-    <?php echo form_open('todos/create_user'); ?>
+    <?php echo form_open('items/create_user'); ?>
     <div class="field">
 	<?php
 	$fn_data = array(

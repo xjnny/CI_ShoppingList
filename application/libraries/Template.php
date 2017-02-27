@@ -4,7 +4,7 @@ class Template {
     
     private $_ci;
        
-    protected $brand_name = 'todos';
+    protected $brand_name = 'items';
     protected $title_separator = ' | ';
     protected $ga_id = FALSE;
     protected $layout = 'default';
