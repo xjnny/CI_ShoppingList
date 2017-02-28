@@ -1,5 +1,5 @@
 <h1>
-    <?php if ($id):?>  
+    <?php if ($id): ?>  
         Edit Shopping List
     <?php else: ?>
         Add new item to shopping list
