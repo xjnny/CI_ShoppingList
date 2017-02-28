@@ -1,6 +1,5 @@
-
 <?php if (!isset($_SESSION['is_logged_in'])): ?>
-    <h5 class="center-align">You gotta <?= anchor('items/login', 'Log In'); ?> to add to your shopping list!</h5>
+    <h5 class="center-align">Please <?= anchor('items/login', 'Log In'); ?> to add to your shopping list!</h5>
 <?php endif; ?> 
 <?php if (isset($_SESSION['is_logged_in'])): ?> 
     <ul class="collection with-header">

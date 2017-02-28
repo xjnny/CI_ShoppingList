@@ -131,3 +131,8 @@ i.material-icons {
 .collection.with-header .collection-item {
     padding-left: 20px;
 }
+
+
+p.grey-text.center {
+    padding-bottom: 15px;
+}
