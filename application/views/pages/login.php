@@ -9,18 +9,17 @@ if ($this->session->flashdata('error')):
 <?php echo form_open('items/validate_user'); ?>
 <fieldset>
     <div class="field">
-	<?php echo form_label('Username', 'username'); ?>
-	<?php echo form_input('username', set_value('username')); ?>
+        <?php echo form_label('Username', 'username'); ?>
+        <?php echo form_input('username', set_value('username')); ?>
     </div>
     <div class="field">
-	<?php echo form_label('Password', 'password'); ?>
-	<?php echo form_password('password', set_value('password')); ?>
+        <?php echo form_label('Password', 'password'); ?>
+        <?php echo form_password('password', set_value('password')); ?>
     </div>
     <div class="wrapper" style="text-align:right;">
-	<?php echo form_submit('submit', 'Login', 'class="waves-effect waves-light btn cyan lighten-2"'); ?>
+        <?php echo form_submit('submit', 'Login', 'class="waves-effect waves-light btn cyan lighten-2"'); ?>
     </div>	
 </fieldset>
-<?php echo form_close(); ?>
-
-    <p class="grey-text center">Don't have an account? <?php echo anchor('items/signup', "Create an account.");?></p>
+<?php echo form_close(); ?> 
+<p class="grey-text center">Don't have an account? <?php echo anchor('items/signup', "Create an account."); ?></p>
 
