@@ -200,6 +200,7 @@ class Items extends CI_Controller {
 	$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
 	$this->form_validation->set_rules('password2', 'Password Confirmation', 'trim|required|matches[password]');
 	if (!$this->form_validation->run()) {
+            $this->template->add_css('css/main.css');
 	    $this->template->load_view('pages/signup');
 	} else {
 	    //Create new user
