@@ -22,5 +22,5 @@ if ($this->session->flashdata('error')):
 </fieldset>
 <?php echo form_close(); ?>
 
-<?php echo "Don't have an account? ".anchor('items/signup', "Create an account."); ?>
+    <p class="grey-text center">Don't have an account? <?php echo anchor('items/signup', "Create an account.");?></p>
 

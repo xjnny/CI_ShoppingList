@@ -28,8 +28,9 @@
                 <li class="collection-item">  
                     <?= anchor('items/uncomplete/' . $item->id, '<i class="red-text text-lighten-1 material-icons">cancel</i>');?> 
                     <span class="complete"><?= $item->item; ?></span> 
-                                                  <?= anchor('items/delete/' . $item->id, '<i class="grey-text material-icons right">delete</i>'); ?>
-                                   <?= anchor('items/add_edit/' . $item->id, '<i class="grey-text material-icons right">edit</i>'); ?>
+                    <span class="right"><?= anchor('items/add_edit/' . $item->id, '<i class="grey-text material-icons">edit</i>'); ?>    <?= anchor('items/delete/' . $item->id, '<i class="grey-text material-icons">delete</i>'); ?>
+                    </span>
+                                   
                 </li>
                         <?php endif ?>
                     <?php endforeach; ?>
@@ -51,8 +52,11 @@
                               <span class="pending"><?= $item->item; ?>
                                </span>
                               <!--</label>-->
-                              <?= anchor('items/delete/' . $item->id, '<i class="grey-text material-icons right">delete</i>'); ?>
-                                   <?= anchor('items/add_edit/' . $item->id, '<i class="grey-text material-icons right">edit</i>'); ?>
+                              <span class="right">
+                                  <?= anchor('items/add_edit/' . $item->id, '<i class="grey-text material-icons">edit</i>'); ?>
+                              <?= anchor('items/delete/' . $item->id, '<i class="grey-text material-icons">delete</i>'); ?>
+                                   
+                              </span>
                               </li>
                        
                                        <?php endif; ?>
