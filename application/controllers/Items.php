@@ -47,7 +47,7 @@ class Items extends CI_Controller {
         
         $this->load_helper_and_model();
         
-        $query = $this->item->db->get_where('items', ['user_id' => $this->session->userdata('user_id')]);
+        $query = $this->item->db->order_by('status DESC', 'id DESC')->get_where('items', ['user_id' => $this->session->userdata('user_id')]);
         
         $data['items'] = $query->result();
         
